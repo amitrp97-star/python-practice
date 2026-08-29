@@ -1,2 +1,5 @@
 text = "Amit"
-text = "Network Engineer"
+
+reverse = text[::-1]
+
+print(reverse)
