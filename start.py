@@ -1,5 +1,2 @@
 text = "Amit"
-
-reverse = text[::-1]
-
-print(reverse)
+text = "Network Engineer"
