@@ -1,4 +1,4 @@
-text = "pooja"
+text = "amita"
 
 reverse = text[::-1]
 
