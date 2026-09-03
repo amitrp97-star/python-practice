@@ -1,20 +1,30 @@
-
 from netmiko import ConnectHandler
 
-router = {
-    "device_type": "cisco_ios",
-    "host": "192.168.1.10",
-    "username": "admin",
-    "password": "Cisco123"
-}
+with open ("devices.txt") as file:
+ for ip in file:
+    ip = ip.strip()
 
+    router = {
+            "device_type": "cisco_ios",
+            "host": ip,
+            "username": "admin",
+            "password": "123"
+        }
 connection = ConnectHandler(**router)
+config = connection.send_command ("show runnning-config")
 
-config = connection.send_command("show running-config")
+with open (f"backup_{ip}.cfg", "w") as backup:
+           backup.write(config)
+           connection.disconnect()
 
-with open("router_backup.cfg", "w") as file:
-    file.write(config)
+           print ("backup succesfully" , ip)
 
-connection.disconnect()
+           
 
-print("Router backup completed")
+
+           
+           
+
+
+
+
